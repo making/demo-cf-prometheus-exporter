@@ -4,10 +4,10 @@ applications:
   memory: 512m
   instances: 3
   routes:
-  - route: demo-prometheus-exporter.202-241-169-198.sslip.io # main url
-  - route: 0-demo.202-241-169-198.sslip.io
-  - route: 1-demo.202-241-169-198.sslip.io
-  - route: 2-demo.202-241-169-198.sslip.io
+  - route: demo-prometheus-exporter.<app domain> # main url
+  - route: 0-demo.<app domain>
+  - route: 1-demo.<app domain>
+  - route: 2-demo.<app domain
   env:
     SERVER_TOMCAT_MAX_THREADS: 4
     JAVA_OPTS: '-XX:ReservedCodeCacheSize=32M -Xss512k -XX:+PrintCodeCache'
