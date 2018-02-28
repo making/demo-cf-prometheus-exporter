@@ -103,10 +103,4 @@ public class ReroutePrometheusController {
             return new X509Certificate[0];
         }
     }
-
-
-    public static void main(String[] args) {
-        String s = "demo.sslip.io".split("-")[0];
-        System.out.println(s);
-    }
 }
