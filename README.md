@@ -15,14 +15,14 @@ exporter example
 
 ``` yaml
 scrape_configs:
-  - job_name: demo
-    scrape_interval: 60s
-    scrape_timeout: 10s
-    metrics_path: /prometheus-cf
-    scheme: https
-    static_configs:
-    - targets:
-      - 0-demo.<app domain>:443
-      - 1-demo.<app domain>:443
-      - 2-demo.<app domain>:443
+- job_name: demo
+  scrape_interval: 60s
+  scrape_timeout: 10s
+  metrics_path: /prometheus-cf
+  scheme: https
+  static_configs:
+  - targets:
+    - 0-demo.<app domain>:443
+    - 1-demo.<app domain>:443
+    - 2-demo.<app domain>:443
 ```
