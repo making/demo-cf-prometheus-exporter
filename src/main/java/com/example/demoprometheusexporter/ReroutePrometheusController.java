@@ -2,10 +2,7 @@ package com.example.demoprometheusexporter;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.RequestEntity;
+import org.springframework.http.*;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +36,7 @@ public class ReroutePrometheusController {
     }
 
     @GetMapping(path = "/prometheus-cf")
-    public String reroute(RequestEntity<?> request, UriComponentsBuilder builder) {
+    public ResponseEntity<String> reroute(RequestEntity<?> request, UriComponentsBuilder builder) {
         UriComponents target = builder.path("prometheus").build();
         String host = target.getHost();
         String instanceIndex = host.split("-")[0];
@@ -47,7 +44,7 @@ public class ReroutePrometheusController {
         headers.putAll(request.getHeaders());
         headers.add("X-CF-APP-INSTANCE", this.appInstanceGuid + ":" + instanceIndex);
         URI prometheusUri = target.toUri();
-        return this.restTemplate.exchange(prometheusUri, HttpMethod.GET, new HttpEntity<>(headers), String.class).getBody();
+        return this.restTemplate.exchange(prometheusUri, HttpMethod.GET, new HttpEntity<>(headers), String.class);
     }
 
 
